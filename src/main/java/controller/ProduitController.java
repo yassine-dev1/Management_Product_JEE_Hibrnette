@@ -18,4 +18,34 @@ public void decrease_stock(){
 	ProduitService produitservice=new ProduitService();
 	  produitservice.decrease_stock();
 }
+
+	// Nouveau traitement : ajuster le stock et calculer le sous-total
+	public void ajusterStockEtSousTotal(int produitId, int quantite) {
+		ProduitService produitService = new ProduitService();
+		produitService.ajusterStockEtSousTotal(produitId, quantite);
+	}
+
+	// CREATE
+	public void createProduit(ProduitDTO produitDTO) {
+		ProduitService produitService = new ProduitService();
+		produitService.createProduit(produitDTO);
+	}
+
+	// READ by ID
+	public ProduitDTO findProduitById(int id) {
+		ProduitService produitService = new ProduitService();
+		return produitService.findProduitById(id);
+	}
+
+	// UPDATE
+	public void updateProduit(ProduitDTO produitDTO) {
+		ProduitService produitService = new ProduitService();
+		produitService.updateProduit(produitDTO);
+	}
+
+	// DELETE
+	public void deleteProduit(int id) {
+		ProduitService produitService = new ProduitService();
+		produitService.deleteProduit(id);
+	}
 }

@@ -91,6 +91,24 @@ public class Form_Main extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+
+		 JMenuItem mntmNewMenuItem_2 = new JMenuItem("Gestion Produit");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			new Form_Produit().setVisible(true);	
+				
+			
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_2);
+
+		JMenuItem mntmFournisseur = new JMenuItem("Gestion Fournisseur");
+		mntmFournisseur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Form_Fournisseur().setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmFournisseur);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Fermer");
 		mnNewMenu.add(mntmNewMenuItem_3);

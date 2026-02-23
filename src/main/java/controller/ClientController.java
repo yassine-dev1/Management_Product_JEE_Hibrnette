@@ -2,6 +2,7 @@ package controller;
 
 import dto.ClientDTO;
 import service.ClientService;
+import java.util.List;
 
 public class ClientController {
 public void ajouterClient(ClientDTO clientdto) {
@@ -23,5 +24,11 @@ public ClientDTO getClientDTO(int id) {
 	ClientService clientservice=new ClientService();
 	return clientservice.getClientDTO(id);
 	
+}
+
+public static List<ClientDTO> retreive()
+{
+    ClientService cs =  new ClientService() ;
+	return cs.retreive() ;
 }
 }

@@ -6,16 +6,17 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mydb</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3308/mydb</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">1234</property>
+        <property name="hibernate.connection.password"></property>
         
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         
     <mapping class="bo.Client"/>
     <mapping class="bo.Commande"/>
-     <mapping class="bo.Ligne_Commande"/>
+    <mapping class="bo.Ligne_Commande"/>
     <mapping class="bo.Produit"/>
+    <mapping class="bo.Fournisseur"/>
     </session-factory>
     
 </hibernate-configuration>

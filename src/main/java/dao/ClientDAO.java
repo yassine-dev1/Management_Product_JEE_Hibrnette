@@ -1,13 +1,38 @@
 package dao;
 
+import java.util.ArrayList;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import java.util.List ;
 
 import bo.Client;
+import bo.Produit;
+
 import org.hibernate.Transaction;
 
 public class ClientDAO {
 
+ public List<Client> retreive(){
+	Transaction tx=null;
+    List<Client> liste=new ArrayList<Client>();
+		try {
+		Session session=HibernateUtil.getSessionFactory().openSession();
+		tx=session.beginTransaction();
+		liste = session.createQuery("from Client", Client.class).list();
+		tx.commit();
+		session.close();
+		return liste;
+		
+		
+	}
+	catch(HibernateException e) {
+		tx.rollback();
+		e.printStackTrace();
+		return liste;
+	
+	}
+}
 	
 public void create(Client client) {
 	Transaction tx=null;

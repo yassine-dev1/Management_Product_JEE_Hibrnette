@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import bo.Client;
 import dao.ClientDAO;
@@ -12,8 +13,9 @@ public class ClientService implements ClientServiceInterface {
 
 	@Override
 	public List<ClientDTO> retreive() {
-		// TODO Auto-generated method stub
-		return null;
+		ClientDAO dao=new ClientDAO();
+		List<ClientDTO> clients = dao.retreive().stream().map(c -> fromClient(c)).collect(Collectors.toList());
+		return clients;
 	}
 
 	@Override
@@ -40,13 +42,7 @@ public class ClientService implements ClientServiceInterface {
 	@Override
 	public boolean delete(int id) {
 		ClientDAO dao=new ClientDAO();
-
-		
-		
-		 	return dao.delete(dao.findById(id));
-		
-		
-		
+	    return dao.delete(dao.findById(id)) ;
 	}
 
 	@Override
@@ -58,24 +54,25 @@ public class ClientService implements ClientServiceInterface {
 		else 
 			throw new ClientNotFoundException("Client introuvable! Il faut choisir un autre Id.");
 	}
-public Client toClient(ClientDTO clientdto) {
-	Client client=new Client();
-	client.setId(clientdto.getId());
-	client.setNom(clientdto.getNom());
-	client.setCapital(clientdto.getCapital());
-	client.setAdresse(clientdto.getAdresse());
-	return client;
-}
-public ClientDTO fromClient(Client client) {
-	ClientDTO clientdto=new ClientDTO();
-	clientdto.setId(client.getId());
-	clientdto.setNom(client.getNom());
-	clientdto.setCapital(client.getCapital());
-	clientdto.setAdresse(client.getAdresse());
+
+    public Client toClient(ClientDTO clientdto) {
+	 Client client=new Client();
+	   client.setId(clientdto.getId());
+	   client.setNom(clientdto.getNom());
+	   client.setCapital(clientdto.getCapital());
+	   client.setAdresse(clientdto.getAdresse());
+
+	 return client;
+    }
+
+    public ClientDTO fromClient(Client client) {
+		ClientDTO clientdto=new ClientDTO();
+		clientdto.setId(client.getId());
+		clientdto.setNom(client.getNom());
+		clientdto.setCapital(client.getCapital());
+		clientdto.setAdresse(client.getAdresse());
 	
 	return clientdto;
-	
-	
 }
 
 

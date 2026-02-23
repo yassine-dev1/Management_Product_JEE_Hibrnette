@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 
@@ -27,6 +28,10 @@ private int qtstock;
 
 @OneToMany(mappedBy = "produit")
 private List<Ligne_Commande> lignes;
+
+@ManyToOne
+@JoinColumn(name = "id_fournisseur") // Le nom de la colonne physique dans la table Produit
+private Fournisseur fournisseur;
 
 public int getId() {
 	return id;
@@ -67,6 +72,9 @@ public List<Ligne_Commande> getLignes() {
 public void setCommandes(List<Ligne_Commande> lignes) {
 	this.lignes = lignes;
 }
+
+public Fournisseur getFournisseur() { return fournisseur; }
+public void setFournisseur(Fournisseur fournisseur) { this.fournisseur = fournisseur; }
 
 public Produit(int id, String libelle, float prix, int qtstock) {
 	super();

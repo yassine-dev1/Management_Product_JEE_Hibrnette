@@ -12,7 +12,19 @@ public class ProduitDTO {
 	private float prix;
 	private int qtstock;
 	private float sous_total;
+	private int fournisseurId;
+	public int getFournisseurId() { return fournisseurId; }
+	public void setFournisseurId(int fournisseurId) { this.fournisseurId = fournisseurId; }
 
+	// Méthode pour ajuster le stock
+	public void ajusterStock(int quantite) {
+		this.qtstock += quantite;
+	}
+
+	// Méthode pour calculer le sous-total
+	public void calculerSousTotal(int quantite) {
+		this.sous_total = this.prix * quantite;
+	}
 
 	private List<CommandeDTO> commandes;
 

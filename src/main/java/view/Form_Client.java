@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.ClientController;
 import dto.ClientDTO;
+import dto.ProduitDTO;
 import exception.ClientNotFoundException;
 
 import javax.swing.JLabel;
@@ -33,6 +34,7 @@ public class Form_Client extends JFrame {
 	private JButton btnNewButton_2;
 	private JButton btnNewButton_3;
 	private JButton btnNewButton_4;
+	private JButton btnAfficher ;
 	private JPanel panel;
 	private JPanel panel_1;
 
@@ -76,18 +78,18 @@ public void desactiverText() {
 		
 		
 	}
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Form_Client frame = new Form_Client();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	// public static void main(String[] args) {
+	// 	EventQueue.invokeLater(new Runnable() {
+	// 		public void run() {
+	// 			try {
+	// 				Form_Client frame = new Form_Client();
+	// 				frame.setVisible(true);
+	// 			} catch (Exception e) {
+	// 				e.printStackTrace();
+	// 			}
+	// 		}
+	// 	});
+	// }
 
 	/**
 	 * Create the frame.
@@ -118,12 +120,27 @@ public void desactiverText() {
 		textField_3.setColumns(10);
 		
 		btnNewButton_3 = new JButton("Chercher");
-		btnNewButton_3.setBounds(181, 26, 116, 21);
+		btnNewButton_3.setBounds(181, 26, 100, 21);
 		panel.add(btnNewButton_3);
-		
+
 		btnNewButton_4 = new JButton("Nouveau");
-		btnNewButton_4.setBounds(335, 26, 85, 21);
+		btnNewButton_4.setBounds(300, 26, 85, 21);
 		panel.add(btnNewButton_4);
+
+		btnAfficher = new JButton("Afficher");
+		btnAfficher.setBounds(400, 26, 80, 21); 
+		panel.add(btnAfficher);
+
+        btnAfficher.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                java.util.List<ClientDTO> clients = ClientController.retreive();
+                StringBuilder sb = new StringBuilder();
+                for (ClientDTO c : clients) {
+                    sb.append(c.toString()).append("\n");
+                }
+                JOptionPane.showMessageDialog(null, sb.toString(), "Liste des Produits", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
 		
 		panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
