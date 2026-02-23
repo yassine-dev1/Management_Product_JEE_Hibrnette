@@ -9,3 +9,4 @@ The project has several layers:
 <li>service</li>
 <li>controller</li>
 <li>view</li>
+# Management_Product_JEE_Hibrnette
