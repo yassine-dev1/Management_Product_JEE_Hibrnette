@@ -11,6 +11,8 @@ import bo.Produit;
 
 import org.hibernate.Transaction;
 
+import Configuration.HibernateUtil;
+
 public class ClientDAO {
 
  public List<Client> retreive(){

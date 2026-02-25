@@ -1,4 +1,4 @@
-package dao;
+package Configuration;
 
 
 import org.hibernate.HibernateException;
@@ -11,7 +11,7 @@ public static SessionFactory getSessionFactory() {
 	try {
 		
 		 Configuration config=new Configuration();
-		 return config.configure("dao/hibernate.cfg.xml").buildSessionFactory();
+		 return config.configure("Configuration/hibernate.cfg.xml").buildSessionFactory();
 		
 	}
 	catch(HibernateException e) {

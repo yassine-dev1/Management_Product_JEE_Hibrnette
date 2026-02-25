@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import Configuration.HibernateUtil;
 import bo.Client;
 import bo.Produit;
 
