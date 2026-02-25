@@ -3,8 +3,8 @@ package service;
 import java.util.Date;
 import java.util.stream.Collectors;
 
-import bo.Client;
-import bo.Commande;
+import Model.Client;
+import Model.Commande;
 import dao.CommandeDAO;
 import dto.ClientDTO;
 import dto.CommandeDTO;

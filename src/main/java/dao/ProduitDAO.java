@@ -8,8 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import Configuration.HibernateUtil;
-import bo.Client;
-import bo.Produit;
+import Model.Client;
+import Model.Produit;
 
 public class ProduitDAO {
 public List<Produit> retreive(){

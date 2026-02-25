@@ -6,12 +6,11 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import java.util.List ;
 
-import bo.Client;
-import bo.Produit;
-
 import org.hibernate.Transaction;
 
 import Configuration.HibernateUtil;
+import Model.Client;
+import Model.Produit;
 
 public class ClientDAO {
 

@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import bo.Client;
-import bo.Produit;
+import Model.Client;
+import Model.Produit;
 import dao.ProduitDAO;
 import dto.ClientDTO;
 import dto.CommandeDTO;
@@ -67,7 +67,7 @@ public class ProduitService implements ProduitServiceInterface{
 			produit.setPrix(produitdto.getPrix());
 			if (produitdto.getFournisseurId() > 0) {
 				// Charger le fournisseur depuis la base
-				bo.Fournisseur fournisseur = new dao.FournisseurDAO().findById(produitdto.getFournisseurId());
+				Model.Fournisseur fournisseur = new dao.FournisseurDAO().findById(produitdto.getFournisseurId());
 				produit.setFournisseur(fournisseur);
 			}
 			return produit;

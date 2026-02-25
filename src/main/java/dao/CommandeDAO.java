@@ -5,8 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import Configuration.HibernateUtil;
-import bo.Commande;
-import bo.Ligne_Commande;
+import Model.Commande;
+import Model.Ligne_Commande;
 
 public class CommandeDAO {
 public void create(Commande commande) {

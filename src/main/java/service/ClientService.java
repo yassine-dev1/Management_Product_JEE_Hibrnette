@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import bo.Client;
+import Model.Client;
 import dao.ClientDAO;
 import dto.ClientDTO;
 import exception.ClientNotFoundException;

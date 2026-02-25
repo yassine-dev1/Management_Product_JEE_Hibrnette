@@ -16,7 +16,7 @@ public class Form_Produit extends JFrame {
     private JTextField txtPrix;
     private JTextField txtQtStock;
     private JComboBox<String> comboFournisseur;
-    private java.util.List<bo.Fournisseur> fournisseursList;
+    private java.util.List<Model.Fournisseur> fournisseursList;
     private ProduitController produitController;
 
     private JTable tableProduits;
@@ -60,7 +60,7 @@ public class Form_Produit extends JFrame {
         fournisseursList = new dao.FournisseurDAO().retreive();
         comboFournisseur = new JComboBox<>();
         if (fournisseursList != null) {
-            for (bo.Fournisseur f : fournisseursList) {
+            for (Model.Fournisseur f : fournisseursList) {
                 comboFournisseur.addItem(f.getNom());
             }
         }
@@ -111,7 +111,7 @@ public class Form_Produit extends JFrame {
         for (ProduitDTO p : produits) {
             String fournisseurNom = "";
             if (fournisseursList != null) {
-                for (bo.Fournisseur f : fournisseursList) {
+                for (Model.Fournisseur f : fournisseursList) {
                     if (f.getId() == p.getFournisseurId()) {
                         fournisseurNom = f.getNom();
                         break;

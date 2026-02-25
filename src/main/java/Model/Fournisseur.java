@@ -1,5 +1,5 @@
 
-package bo ;
+package Model ;
 import java.io.Serializable;
 import java.util.List;
 import jakarta.persistence.*;

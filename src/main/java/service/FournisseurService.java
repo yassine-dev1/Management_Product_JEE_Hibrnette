@@ -2,7 +2,8 @@ package service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import bo.Fournisseur;
+
+import Model.Fournisseur;
 import dao.FournisseurDAO;
 import dto.FournisseurDTO;
 

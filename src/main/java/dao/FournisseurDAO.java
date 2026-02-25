@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import Configuration.HibernateUtil;
-import bo.Fournisseur;
+import Model.Fournisseur;
 
 public class FournisseurDAO {
     public void create(Fournisseur fournisseur) {

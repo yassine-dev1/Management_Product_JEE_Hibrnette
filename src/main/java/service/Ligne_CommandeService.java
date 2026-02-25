@@ -1,7 +1,7 @@
 package service;
 
-import bo.Client;
-import bo.Ligne_Commande;
+import Model.Client;
+import Model.Ligne_Commande;
 import dto.ClientDTO;
 import dto.CommandeDTO;
 import dto.Ligne_CommandeDTO;
