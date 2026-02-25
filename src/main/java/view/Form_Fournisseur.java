@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,10 +19,14 @@ public class Form_Fournisseur extends JFrame {
     private JTextField txtId;
     private FournisseurController controller;
 
+    private JTable tableFournisseurs;
+    private DefaultTableModel tableModel;
+    private JScrollPane scrollPane;
+
     public Form_Fournisseur() {
         setTitle("Gestion Fournisseur");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 400, 350);
+        setBounds(100, 100, 600, 500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -93,19 +98,25 @@ public class Form_Fournisseur extends JFrame {
             }
         });
 
-        JButton btnAfficher = new JButton("Afficher");
-        btnAfficher.setBounds(140, 270, 100, 30);
-        contentPane.add(btnAfficher);
-        btnAfficher.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                java.util.List<FournisseurDTO> fournisseurs = controller.retreive();
-                StringBuilder sb = new StringBuilder();
-                for (FournisseurDTO f : fournisseurs) {
-                    sb.append(f.toString()).append("\n");
-                }
-                JOptionPane.showMessageDialog(null, sb.toString(), "Liste des Fournisseurs", JOptionPane.INFORMATION_MESSAGE);
-            }
-        });
+        // Création du modèle de table
+        String[] columnNames = {"ID", "Nom", "Contact", "Téléphone", "Email", "Adresse"};
+        tableModel = new DefaultTableModel(columnNames, 0);
+        tableFournisseurs = new JTable(tableModel);
+        scrollPane = new JScrollPane(tableFournisseurs);
+        scrollPane.setBounds(30, 360, 520, 90);
+        contentPane.add(scrollPane);
+
+        // Remplir la table dès l'ouverture
+        remplirTableFournisseurs();
+    }
+
+    private void remplirTableFournisseurs() {
+        tableModel.setRowCount(0);
+        java.util.List<FournisseurDTO> fournisseurs = controller.retreive();
+        for (FournisseurDTO f : fournisseurs) {
+            Object[] row = {f.getId(), f.getNom(), f.getContact(), f.getTelephone(), f.getEmail(), f.getAdresse()};
+            tableModel.addRow(row);
+        }
 
         JButton btnModifier = new JButton("Modifier");
         btnModifier.setBounds(250, 270, 100, 30);

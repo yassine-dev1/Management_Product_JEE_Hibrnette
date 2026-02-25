@@ -1,0 +1,42 @@
+{
+    // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
+    // Pointez pour afficher la description des attributs existants.
+    // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ClientDAO",
+            "request": "launch",
+            "mainClass": "dao.ClientDAO",
+            "projectName": "OrderManagement"
+        },
+        {
+            "type": "java",
+            "name": "HibernateUtil",
+            "request": "launch",
+            "mainClass": "dao.HibernateUtil",
+            "projectName": "OrderManagement"
+        },
+        {
+            "type": "java",
+            "name": "Form_Commande",
+            "request": "launch",
+            "mainClass": "view.Form_Commande",
+            "projectName": "OrderManagement"
+        },
+        {
+            "type": "java",
+            "name": "Form_Main",
+            "request": "launch",
+            "mainClass": "view.Form_Main",
+            "projectName": "OrderManagement"
+        }
+    ]
+}

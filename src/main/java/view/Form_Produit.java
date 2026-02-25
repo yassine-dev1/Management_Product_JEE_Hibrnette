@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.border.EmptyBorder;
 //import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,10 +19,14 @@ public class Form_Produit extends JFrame {
     private java.util.List<bo.Fournisseur> fournisseursList;
     private ProduitController produitController;
 
+    private JTable tableProduits;
+    private DefaultTableModel tableModel;
+    private JScrollPane scrollPane;
+
     public Form_Produit() {
         setTitle("Gestion Produit");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 400, 300);
+        setBounds(100, 100, 700, 500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -87,20 +92,35 @@ public class Form_Produit extends JFrame {
             }
         });
 
-        JButton btnAfficher = new JButton("Afficher Produits");
-        btnAfficher.setBounds(120, 190, 150, 30);
-        contentPane.add(btnAfficher);
 
-        btnAfficher.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                java.util.List<ProduitDTO> produits = produitController.getAllProduit();
-                StringBuilder sb = new StringBuilder();
-                for (ProduitDTO p : produits) {
-                    sb.append(p.toString()).append("\n");
+        // Création du modèle de table
+        String[] columnNames = {"ID", "Libellé", "Prix", "Qté Stock", "Fournisseur"};
+        tableModel = new DefaultTableModel(columnNames, 0);
+        tableProduits = new JTable(tableModel);
+        scrollPane = new JScrollPane(tableProduits);
+        scrollPane.setBounds(30, 280, 620, 150);
+        contentPane.add(scrollPane);
+
+        // Remplir la table dès l'ouverture
+        remplirTableProduits();
+    }
+
+    private void remplirTableProduits() {
+        tableModel.setRowCount(0);
+        java.util.List<ProduitDTO> produits = produitController.getAllProduit();
+        for (ProduitDTO p : produits) {
+            String fournisseurNom = "";
+            if (fournisseursList != null) {
+                for (bo.Fournisseur f : fournisseursList) {
+                    if (f.getId() == p.getFournisseurId()) {
+                        fournisseurNom = f.getNom();
+                        break;
+                    }
                 }
-                JOptionPane.showMessageDialog(null, sb.toString(), "Liste des Produits", JOptionPane.INFORMATION_MESSAGE);
             }
-        });
+            Object[] row = {p.getId(), p.getLibelle(), p.getPrix(), p.getQtstock(), fournisseurNom};
+            tableModel.addRow(row);
+        }
 
             // Champ pour l'ID du produit à modifier/supprimer/rechercher
             JLabel lblId = new JLabel("ID Produit :");
